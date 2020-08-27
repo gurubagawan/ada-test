@@ -20,6 +20,8 @@ You are working on a database-backed web-app in which you have to fix bugs and a
 
 ## Tasks
 
+![58CB6FC5-1001-43C2-A8DD-729C5CF0258B](https://user-images.githubusercontent.com/5758214/91488685-ac731280-e87d-11ea-8e93-25bdfaa5861d.png)
+
 ## Challenge 1
 
 Build a front end component that displays  information from the /nodes endpoint
