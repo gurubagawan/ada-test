@@ -37,7 +37,7 @@ strings.
 ## Tools to help you get started
 
 ### React
-(create react app)[https://reactjs.org/docs/create-a-new-react-app.html]
+[create react app](https://reactjs.org/docs/create-a-new-react-app.html)
 
 ### API Setup and Docs
 It should be simple to get the API up and running:
