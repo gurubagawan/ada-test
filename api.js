@@ -9,7 +9,7 @@ let db = new sqlite3.Database('./database.db');
 /**
  * Search for answers
  */
-app.post('nodes/search', function (req, res) {
+app.post('/nodes/search', function (req, res) {
     let query = req.body.query
     if(! query)
         return res.status(400).send("Bad query")
@@ -88,7 +88,19 @@ app.get("/nodes", (req, res) => {
  * Returns data that shows the connections between nodes
  */
 app.get("/nodes/connections", (req, res) => {
-  res.status(200)
+  db.all(`select
+    a.id, a.connections
+  from
+    answers a`, {}, (err, rows_raw) => {
+      console.log(rows_raw)
+      const response = rows_raw.map(row => {
+        console.log(row, row.connections)
+        row.connections = JSON.parse(row.connections);
+
+        return row;
+      })
+    res.status(200).send(response)
+  });
 })
 
 var server = app.listen(5000, function() {
