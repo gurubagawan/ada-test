@@ -20,6 +20,8 @@ You are working on a database-backed web-app in which you have to fix bugs and a
 
 ## Tasks
 
+![58CB6FC5-1001-43C2-A8DD-729C5CF0258B](resources/sketch.png)
+
 ## Challenge 1
 
 Build a front end component that displays  information from the /nodes endpoint
@@ -37,7 +39,7 @@ strings.
 ## Tools to help you get started
 
 ### React
-(create react app)[https://reactjs.org/docs/create-a-new-react-app.html]
+[create react app](https://reactjs.org/docs/create-a-new-react-app.html)
 
 ### API Setup and Docs
 It should be simple to get the API up and running:
