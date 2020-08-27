@@ -78,7 +78,10 @@ app.get("/nodes", (req, res) => {
       answers a
     join blocks b
       on a.id=b.answer_id`, {}, (err, rows_raw) => {
-    res.status(200).send(rows_raw)
+        let rows = rows_raw.map((r) => {
+          return {"id": r.id, "title": r.title, content: JSON.parse(r.content)}
+      })
+    res.status(200).send(rows)
   });
 })
 
