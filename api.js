@@ -17,12 +17,14 @@ app.post('/nodes/search', function (req, res) {
     let queryTerms = query.toLowerCase().split(" ")
 
     db.all(`select
-                a.id, a.title
+                a.id, a.title, b.content
             from
-                answers a`, {}, (err, rows_raw) => {
+                answers a
+                join blocks b
+      on a.id=b.answer_id`, {}, (err, rows_raw) => {
 
                let rows = rows_raw.map((r) => {
-                   return {"id": r.id, "title": r.title}
+                   return {"id": r.id, "title": r.title, "content": JSON.parse(r.content)}
                })
 
                let matched_rows = rows.filter(answer => {
@@ -33,6 +35,7 @@ app.post('/nodes/search', function (req, res) {
                            return block.map(extract_text)
                        }
                        var text = ""
+                       console.log(block)
                        for (let [key, value] of Object.entries(block)) {
                            if(Array.isArray(value)){
                                text += value.map(extract_text)
@@ -45,6 +48,7 @@ app.post('/nodes/search', function (req, res) {
                    }
 
                    // mash it all together and normalize it
+                   console.log(answer)
                    let fulltext = (answer.title + " " + extract_text(answer.content).join(" ")).toLowerCase()
 
                    // see if all the terms show up
@@ -55,7 +59,11 @@ app.post('/nodes/search', function (req, res) {
                    return true
                })
 
-               res.status(200).send(matched_rows)
+               let result_rows = matched_rows.map((r) => {
+                return {"id": r.id, "title": r.title}
+              })
+
+               res.status(200).send(result_rows)
            });
 
 })
