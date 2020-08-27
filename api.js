@@ -35,7 +35,6 @@ app.post('/nodes/search', function (req, res) {
                            return block.map(extract_text)
                        }
                        var text = ""
-                       console.log(block)
                        for (let [key, value] of Object.entries(block)) {
                            if(Array.isArray(value)){
                                text += value.map(extract_text)
@@ -48,7 +47,6 @@ app.post('/nodes/search', function (req, res) {
                    }
 
                    // mash it all together and normalize it
-                   console.log(answer)
                    let fulltext = (answer.title + " " + extract_text(answer.content).join(" ")).toLowerCase()
 
                    // see if all the terms show up
