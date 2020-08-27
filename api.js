@@ -79,25 +79,26 @@ app.get("/nodes", (req, res) => {
     join blocks b
       on a.id=b.answer_id`, {}, (err, rows_raw) => {
         let rows = rows_raw.map((r) => {
-          return {"id": r.id, "title": r.title, content: JSON.parse(r.content)}
+          return {"id": r.id, "title": r.title}
       })
     res.status(200).send(rows)
   });
 })
 
 
-// TODO
 /**
- * Returns data that shows the connections between nodes
+ * Returns all data related to a specific answer
  */
-app.get("/nodes/connections", (req, res) => {
+app.get("/nodes/:id", (req, res) => {
   db.all(`select
-    a.id, a.connections
+    a.id, a.title, b.content, a.connections
   from
-    answers a`, {}, (err, rows_raw) => {
-      console.log(rows_raw)
+    answers a
+  join blocks b
+      on a.id=b.answer_id
+      where a.id=${req.params.id}`, {}, (err, rows_raw) => {
       const response = rows_raw.map(row => {
-        console.log(row, row.connections)
+        row.content = JSON.parse(row.content);
         row.connections = JSON.parse(row.connections);
 
         return row;

@@ -1,7 +1,6 @@
-
 # Ada Front End Test
 
-Welcome to the Ada Tech Hiring test! This test is designed to let you **prove** that you can program, whether you have relevant credentials or not.
+Welcome to the Front End Developer test! The goal of this test is to allow you to prove that you can program, as well as develop and design application interfaces. In this test, we have provided an API as well as documentation for it, and you will have to build a web interface for the aforementioned API.
 
 This test is inspired by problems we have run into in our work and we expect you to tackle it like any other work problem. You may use any programming language as well as your favourite editor. Feel free to google-and-stackoverflow your way to success.
 
@@ -30,14 +29,18 @@ according to the specification outlined here.
 
 Build an interactive front end compoenent that works with the /search end point
 
+## Tools to help you get started
 
-## API Setup and Docs
+### React
+(create react app)[https://reactjs.org/docs/create-a-new-react-app.html]
+
+### API Setup and Docs
 It should be simple to get the API up and running:
 
 1. `yarn`
 2. `yarn start-server`
 
-### `GET /nodes`
+#### `GET /nodes`
 
 Returns a shallow list of nodes with enough to render a sidebar
 
@@ -45,20 +48,13 @@ Returns a shallow list of nodes with enough to render a sidebar
 [
   {
     "id": 1,
-    "title": "These are the voyages",
-    "content": [
-      {
-        "type": "text",
-        "body": "These are the voyages of the Starship Enterprise"
-      },
-      ...
-    ]
+    "title": "These are the voyages"
   },
   ...
 ]
 ```
 
-### `GET /nodes/connections`
+#### `GET /nodes/:id`
 
 returns a nodes' connections to children nodes
 
@@ -76,7 +72,7 @@ returns a nodes' connections to children nodes
 ]
 ```
 
-### `POST /nodes/search`
+#### `POST /nodes/search`
 
 returns search content related to a node
 
@@ -104,7 +100,7 @@ returns search content related to a node
 ]
 ```
 
-### `GET /variables`
+#### `GET /variables`
 
 returns all our variable data
 
