@@ -67,9 +67,14 @@ returns a nodes' connections to children nodes
 [
   {
     "id": 1,
+    "title": "Data on friendship",
     "connections": [
       2, // These are ID's to other nodes
       3,
+      ...
+    ],
+    "content": [
+      {...},
       ...
     ]
   },
@@ -89,18 +94,15 @@ returns search content related to a node
 [
     {
         "id": 2,
-        "title": "Data on friendship",
-        "content": [...]
+        "title": "Data on friendship"
     },
     {
         "id": 5,
-        "title": "Maybe Data with Beard",
-        "content": [...]
+        "title": "Maybe Data with Beard"
     },
     {
         "id": 6,
-        "title": "Borg Hails",
-        "content": [...]
+        "title": "Borg Hails"
     }
 ]
 ```
@@ -113,7 +115,7 @@ returns all our variable data
 [
   {
       "id": "74c695031a554c2ebfdb2ee123c8b4f6",
-      "value": "first",
+      "name": "first",
       "scope": "global"
   },
   ...
