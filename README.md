@@ -10,7 +10,7 @@ As for the programming challenges, we suggest you stick to the old programming m
 - Make it right
 - Make it fast
 
-The most important thing is to make it work somehow. If you then can clean it up and make it _right_, all the better. That said, we would like you to give some thought and documentation on how you would deliver your code to clients in production and let us understand the underlying assumptions of your solution. Why is this solution appropriate? How would you handle large datasets on the client? What could be potential user experience challenges in the future? What would you change if you had more time to work on it? Please spare a few words to these assumptions and write them out; either directly as code comments or in a separate document.
+The most important thing is to make it work somehow. If you then can clean it up and make it _right_, all the better. That said, we would like you to give some thought and documentation on how you would deliver your code to clients in production and let us understand the underlying assumptions of your solution. Why is this solution appropriate? How would you handle large datasets on the client? What could be potential user experience challenges in the future? How would you make this accesible? What would you change if you had more time to work on it? Please spare a few words to these assumptions and write them out; either directly as code comments or in a separate document.
 
 As for the code, don't feel bound by what is already there. Add functions and datastructures as you see fit, and delete old code with abandon if you don't find it helpful (as long as the unit tests pass). This is your code, so write it your way!
 
@@ -27,7 +27,12 @@ according to the specification outlined here.
 
 ## Challenge 2
 
-Build an interactive front end compoenent that works with the /search end point
+Build an interactive front end component that works with the /search end point
+
+## Challenge 3
+
+Build an interactive front end component that renders the content using template
+strings.
 
 ## Tools to help you get started
 
