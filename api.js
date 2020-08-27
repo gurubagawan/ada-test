@@ -17,14 +17,12 @@ app.post('/nodes/search', function (req, res) {
     let queryTerms = query.toLowerCase().split(" ")
 
     db.all(`select
-                a.id, a.title, b.content
+                a.id, a.title
             from
-                answers a
-            join blocks b
-                on a.id=b.answer_id`, {}, (err, rows_raw) => {
+                answers a`, {}, (err, rows_raw) => {
 
                let rows = rows_raw.map((r) => {
-                   return {"id": r.id, "title": r.title, content: JSON.parse(r.content)}
+                   return {"id": r.id, "title": r.title}
                })
 
                let matched_rows = rows.filter(answer => {
@@ -73,11 +71,9 @@ app.get("/variables", (req, res) => {
 
 app.get("/nodes", (req, res) => {
   db.all(`select
-      a.id, a.title, b.content
+      a.id, a.title
     from
-      answers a
-    join blocks b
-      on a.id=b.answer_id`, {}, (err, rows_raw) => {
+      answers a`, {}, (err, rows_raw) => {
         let rows = rows_raw.map((r) => {
           return {"id": r.id, "title": r.title}
       })
