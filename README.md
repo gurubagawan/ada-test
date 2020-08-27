@@ -1,15 +1,24 @@
 
 # Ada Front End Test
 
+Welcome to the Front End Developer test! The goal of this test is to allow you to prove that you can program, as well as develop and design application interfaces. In this test, we have provided an API as well as documentation for it, and you will have to build a web interface for the aforementioned API.
+
+You may implement this web app in whatever framework you are most comfortable with
+
 ## Task
 
-## API Setup and Docs
+## Tools to help you get started
+
+### React
+(create react app)[https://reactjs.org/docs/create-a-new-react-app.html]
+
+### API Setup and Docs
 It should be simple to get the API up and running:
 
 1. `yarn`
 2. `yarn start-server`
 
-### `GET /nodes`
+#### `GET /nodes`
 
 Returns a shallow list of nodes with enough to render a sidebar
 
@@ -17,20 +26,13 @@ Returns a shallow list of nodes with enough to render a sidebar
 [
   {
     "id": 1,
-    "title": "These are the voyages",
-    "content": [
-      {
-        "type": "text",
-        "body": "These are the voyages of the Starship Enterprise"
-      },
-      ...
-    ]
+    "title": "These are the voyages"
   },
   ...
 ]
 ```
 
-### `GET /nodes/connections`
+#### `GET /nodes/:id`
 
 returns a nodes' connections to children nodes
 
@@ -48,7 +50,7 @@ returns a nodes' connections to children nodes
 ]
 ```
 
-### `POST /nodes/search`
+#### `POST /nodes/search`
 
 returns search content related to a node
 
@@ -76,7 +78,7 @@ returns search content related to a node
 ]
 ```
 
-### `GET /variables`
+#### `GET /variables`
 
 returns all our variable data
 
