@@ -12,7 +12,7 @@ As for the programming challenges, we suggest you stick to the old programming m
 
 The most important thing is to make it work somehow. If you then can clean it up and make it _right_, all the better. That said, we would like you to give some thought and documentation on how you would deliver your code to clients in production and let us understand the underlying assumptions of your solution. Why is this solution appropriate? How would you handle large datasets on the client? What could be potential user experience challenges in the future? How would you make this accesible? What would you change if you had more time to work on it? Please spare a few words to these assumptions and write them out; either directly as code comments or in a separate document.
 
-As for the code, don't feel bound by what is already there. Add functions and datastructures as you see fit, and delete old code with abandon if you don't find it helpful (as long as the unit tests pass). This is your code, so write it your way!
+As for the code, don't feel bound by what is already there. Add functions and datastructures as you see fit, and delete old code with abandon if you don't find it helpful. This is your code, so write it your way!
 
 ## The Challenges 
 
@@ -20,11 +20,17 @@ You are working on a database-backed web-app in which you have to fix bugs and a
 
 ### Designs
 
+Your application should look something like the sketch below. 
+
 ![58CB6FC5-1001-43C2-A8DD-729C5CF0258B](resources/sketch.png)
+
+- When you click on an item in the list view on the left side of the app, a space between that cell and the cell beneath it should show that `node`s `connections`.
+
+- You should then be able to click on the `node`s to reveal their `connections` as well, if they exist, that is
 
 ### Challenge 1
 
-Build a front end component that displays  information from the /nodes endpoint according to the specification outlined in the design documents.
+Build a front end component that displays information from the /nodes endpoint according to the specification outlined in the design documents.
 
 ### Challenge 2
 
@@ -33,6 +39,10 @@ Build an interactive front end component that works with the /search end point a
 ### Challenge 3
 
 Build an interactive front end component that renders the content using template strings.
+
+Variables are represented inside of `node` content as a template string `{<idOFTheVariable>|a fallback value}`
+
+![variable pill](resources/variable-pill-example.png)
 
 ## Getting Started
 
