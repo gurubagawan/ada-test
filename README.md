@@ -127,7 +127,7 @@ returns all our variable data
 
 ## Maintainers help
 
-When we have a new version ready run the following script while at the repo root.
+When we have a new version ready run the following script while at the repo root. WARNING this will remove any un-commited changes you may have made in the repository so ensure you commit them or are on master.
 
 ```
 ./scripts/package.sh
