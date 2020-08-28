@@ -24,13 +24,17 @@ Your application should look something like the sketch below.
 
 ![58CB6FC5-1001-43C2-A8DD-729C5CF0258B](resources/sketch.png)
 
-- When you click on an item in the list view on the left side of the app, a space between that cell and the cell beneath it should show that `node`s `connections`.
-
-- You should then be able to click on the `node`s to reveal their `connections` as well, if they exist, that is
-
 ### Challenge 1
 
 Build a front end component that displays information from the /nodes endpoint according to the specification outlined in the design documents.
+
+- When you click on an item in the list view on the left side of the app, a space between that cell and the cell beneath it should show that `node`s `connections`.
+
+- You should then be able to click on the `node`s to reveal their `connections` as well, if they exist that is.
+
+- When you click on a diferent item in the list, it should close the connections that you are viewing and open up the connectiuons for the node that you have clicked on.
+
+- Any time you click on a node, it should display all of the content in the Detail View on the right side of the page.
 
 ### Challenge 2
 
