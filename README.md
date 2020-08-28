@@ -16,7 +16,7 @@ As for the code, don't feel bound by what is already there. Add functions and da
 
 ## The Challenges 
 
-You are working on a database-backed web-app in which you have to fix bugs and add new functionality (sounds familiar?). We have provided you with a functional backend and database that we need you to build a front end for. We have also provided design documents typical of what our front end minded folks use today. Success here is in building something functional that aligns with the design direction provided while giving us an understanding of the choices you make as you build your solution.
+You are working on a database-backed web-app in which you have to fix bugs and add new functionality (sounds familiar?). We have provided you with a functional backend and database that we need you to build a front end for. Success here is in building something functional that aligns with the design direction provided while giving us an understanding of the choices you make as you build your solution.
 
 ### Designs
 
