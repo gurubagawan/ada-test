@@ -43,7 +43,7 @@ Build an interactive front end component that renders the content using template
 [create react app](https://reactjs.org/docs/create-a-new-react-app.html)
 
 ### API Setup and Docs
-It should be simple to get the API that will give your web app data up and running:
+It should be simple to get the API that will get your web app data up and running:
 
 1. `yarn`
 2. `yarn start-server`
@@ -127,7 +127,7 @@ returns all our variable data
 
 ## Maintainers help
 
-When we have a new version ready run at the repo root.
+When we have a new version ready run the following script while at the repo root.
 
 ```
 ./scripts/package.sh
