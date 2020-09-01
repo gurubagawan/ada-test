@@ -32,25 +32,25 @@ Build a frontend component that displays information from the /nodes endpoint ac
 
 - You should then be able to click on the `node`s to reveal their `connections` as well, if they exist that is.
 
-- When you click on a diferent item in the list, it should close the connections that you are viewing and open up the connectiuons for the node that you have clicked on.
+- When you click on a diferent item in the list, it should close the connections that you are viewing and open up the connections for the node that you have clicked on.
 
 - Any time you click on a node, it should display all of the content in the Detail View on the right side of the page.
 
 ### Challenge 2
 
-Build an interactive front end component that works with the /search end point and displays results as outlined in the design documents.
+Build an interactive frontend component that works with the /search end point and displays results as outlined in the design documents.
 
 ### Challenge 3
 
-Build an interactive front end component that renders the content using template strings.
+Build an interactive frontend component that renders the content using template strings.
 
-Variables are represented inside of `node` content as a template string `{<idOFTheVariable>|a fallback value}`
+Variables are represented inside of `node` content as a template string `{<idOfTheVariable>|a fallback value}`
 
 ![variable pill](resources/variable-pill-example.png)
 
 ## Getting Started
 
-### Tools to help you get started
+### Tools to Help you get Started
 
 #### React
 
@@ -64,7 +64,7 @@ It should be simple to get the API that will get your web app data up and runnin
 
 #### `GET /nodes`
 
-Returns a shallow list of nodes with enough to render a sidebar
+Returns a shallow list of nodes with enough data to render a sidebar
 
 ```
 [
@@ -139,7 +139,7 @@ returns all our variable data
 ]
 ```
 
-## Maintainers help
+## Maintainers Help
 
 When we have a new version ready run the following script while at the repo root. WARNING this will remove any un-commited changes you may have made in the repository so ensure you commit them or are on master.
 
