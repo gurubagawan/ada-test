@@ -10,13 +10,13 @@ As for the programming challenges, we suggest you stick to the old programming m
 - Make it right
 - Make it fast
 
-The most important thing is to make it work somehow. If you then can clean it up and make it _right_, all the better. That said, we would like you to give some thought and documentation on how you would deliver your code to clients in production and let us understand the underlying assumptions of your solution. Why is this solution appropriate? How would you handle large datasets on the client? What could be potential user experience challenges in the future? How would you make this accesible? What would you change if you had more time to work on it? Please spare a few words to these assumptions and write them out; either directly as code comments or in a separate document.
+The most important thing is to make it work somehow. If you then can clean it up and make it _right_, all the better. That said, we would like you to give some thought and documentation on how you would deliver your code to clients in production and let us understand the underlying assumptions of your solution. Why is this solution appropriate? How would you handle large datasets on the client? What could be potential user experience challenges in the future? How would you make this accessible? What would you change if you had more time to work on it? Please spare a few words to these assumptions and write them out; either directly as code comments or in a separate document.
 
 As for the code, don't feel bound by what is already there. Add functions and datastructures as you see fit, and delete old code with abandon if you don't find it helpful. This is your code, so write it your way!
 
 ## The Challenges 
 
-You are working on a database-backed web-app in which you have to fix bugs and add new functionality (sounds familiar?). We have provided you with a functional backend and database that we need you to build a front end for. Success here is in building something functional that aligns with the design direction provided while giving us an understanding of the choices you make as you build your solution.
+You are working on a database-backed web-app in which you have to fix bugs and add new functionality (sounds familiar?). We have provided you with a functional backend and database that we need you to build a frontend for. Success here is in building something functional that aligns with the design direction provided while giving us an understanding of the choices you make as you build your solution.
 
 ### Designs
 
@@ -26,7 +26,7 @@ Your application should look something like the sketch below.
 
 ### Challenge 1
 
-Build a front end component that displays information from the /nodes endpoint according to the specification outlined in the design documents.
+Build a frontend component that displays information from the /nodes endpoint according to the specification outlined in the design documents.
 
 - When you click on an item in the list view on the left side of the app, a space between that cell and the cell beneath it should show that `node`s `connections`.
 
