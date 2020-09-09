@@ -14,6 +14,8 @@ The most important thing is to make it work somehow. If you then can clean it up
 
 As for the code, don't feel bound by what is already there. Add functions and datastructures as you see fit, and delete old code with abandon if you don't find it helpful. This is your code, so write it your way!
 
+The most important thing is to make your solution work somehow. If you then can clean it up and make it right, all the better. As for the code, don't feel bound by what is already there. Add functions and datastructures as you see fit, and delete old code with abandon if you don't find it helpful (as long as the unit tests pass). **If you are unsure on whether to develop enterprise-edition software to show us that you know how to build serious projects please keep in mind that we at Ada strongly value readability and simplicity.**
+
 ## The Challenges 
 
 You are working on a database-backed web-app in which you have to fix bugs and add new functionality (sounds familiar?). We have provided you with a functional backend and database that we need you to build a frontend for. Success here is in building something functional that aligns with the design direction provided while giving us an understanding of the choices you make as you build your solution.
