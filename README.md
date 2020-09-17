@@ -42,11 +42,17 @@ Build a frontend component that displays information from the /nodes endpoint ac
 
 Build an interactive frontend component that works with the /search end point and displays results as outlined in the design documents.
 
+In the detail view, make sure to **highlight** the search terms in the text if it's in the answer's content.
+
+*Users may have input unsafe strings to try to expose XSS vulnerabilities in our application. Make sure to render highlights and other strings in a safe and secure way.*
+
 ### Challenge 3
 
 Build an interactive frontend component that renders the content using template strings.
 
 Variables are represented inside of `node` content as a template string `{<idOfTheVariable>|a fallback value}`
+
+When displaying a variable, make sure to show that it's a variable value. In the image below, we can see how the variables should look embedded in text.
 
 ![variable pill](resources/variable-pill-example.png)
 
