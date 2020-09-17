@@ -9,7 +9,6 @@ As for the programming challenges, we suggest you stick to the old programming m
 - Make it work
 - Make it right
 - Make it fast
-- MAKE SURE IT'S ALSO SECURE
 
 The most important thing is to make it work somehow. If you then can clean it up and make it _right_, all the better. That said, we would like you to give some thought and documentation on how you would deliver your code to clients in production and let us understand the underlying assumptions of your solution. Why is this solution appropriate? How would you handle large datasets on the client? What could be potential user experience challenges in the future? How would you make this accessible? What would you change if you had more time to work on it? Please spare a few words to these assumptions and write them out; either directly as code comments or in a separate document.
 
@@ -44,6 +43,8 @@ Build a frontend component that displays information from the /nodes endpoint ac
 Build an interactive frontend component that works with the /search end point and displays results as outlined in the design documents.
 
 In the detail view, make sure to **highlight** the search terms in the text if it's in the answer's content.
+
+*Users may have input unsafe strings to try to expose XSS vulnerabilities in our application. Make sure to render highlights and other strings in a safe and secure way*
 
 ### Challenge 3
 
