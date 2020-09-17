@@ -44,7 +44,7 @@ Build an interactive frontend component that works with the /search end point an
 
 In the detail view, make sure to **highlight** the search terms in the text if it's in the answer's content.
 
-*Users may have input unsafe strings to try to expose XSS vulnerabilities in our application. Make sure to render highlights and other strings in a safe and secure way*
+*Users may have input unsafe strings to try to expose XSS vulnerabilities in our application. Make sure to render highlights and other strings in a safe and secure way.*
 
 ### Challenge 3
 
