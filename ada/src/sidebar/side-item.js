@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const SideItem = ({ title, id, expanded, onClick }) => {
+const SideItemContainer = ({ title, id, expanded, onClick }) => {
   const [loading, setLoaded] = useState(true);
   const [subItems, setSubs] = useState([
     {
@@ -52,4 +52,4 @@ const SideItem = ({ title, id, expanded, onClick }) => {
   );
 };
 
-export default SideItem;
+export default SideItemContainer;
