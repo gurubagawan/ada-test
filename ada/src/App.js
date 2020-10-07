@@ -9,17 +9,13 @@ function App() {
   const [nodeItem, setNode] = useState({});
 
   useEffect(() => {
-    console.log('ran');
     fetch(`http://localhost:5000/nodes/${focusedPost}`)
       .then((res) => res.json())
       .then((result) => {
-        console.log(result[0]);
         setNode(result[0]);
-        // setLoading(false);
-        console.log(nodeItem);
       });
   }, [focusedPost]);
-  // console.log(nodeItem, focusedPost);
+
   return (
     <div className="App">
       <Container>
