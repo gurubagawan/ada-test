@@ -14,9 +14,9 @@ const ExpandedView = ({ id }) => {
         setNode(result[0]);
         setLoading(false);
       });
-  });
+  }, []);
 
-  if (loading) return <Spinner />;
+  if (id === 0 || loading) return <Spinner />;
 
   const expandedList = nodeItem.content.map((item, i) => {
     if (item.type === 'text') {

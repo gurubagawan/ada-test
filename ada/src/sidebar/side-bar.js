@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
 import SideItemContainer from './side-item';
 
-const SideBar = ({}) => {
+const SideBar = ({ changePost, LoadPost }) => {
   const [loading, setLoading] = useState(true);
   const [expandedNode, setExpand] = useState(-1);
   const [nodes, setNodes] = useState([]);
@@ -14,7 +14,7 @@ const SideBar = ({}) => {
         setNodes(result);
         setLoading(false);
       });
-  });
+  }, []);
 
   // const displayAllPosts = postIDs.map((id, i) => {
   //   if (i == 0) return <BlogItem key={i} itemID={id} mainPost={true} />;
@@ -27,6 +27,7 @@ const SideBar = ({}) => {
         onClick={() => {
           console.log('ran');
           setExpand(i);
+          changePost(node.id);
         }}
         key={i}
         title={node.title}
