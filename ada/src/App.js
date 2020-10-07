@@ -8,27 +8,27 @@ function App() {
   const [focusedPost, changePost] = useState(0);
   const [nodeItem, setNode] = useState({});
 
-  const LoadPost = () => {
-    useEffect(() => {
-      fetch(`http://localhost:5000/nodes/${focusedPost}`)
-        .then((res) => res.json())
-        .then((result) => {
-          console.log(result);
-          setNode(result[0]);
-          // setLoading(false);
-        });
-    }, []);
-  };
-  console.log(nodeItem, focusedPost);
+  useEffect(() => {
+    console.log('ran');
+    fetch(`http://localhost:5000/nodes/${focusedPost}`)
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result[0]);
+        setNode(result[0]);
+        // setLoading(false);
+        console.log(nodeItem);
+      });
+  }, [focusedPost]);
+  // console.log(nodeItem, focusedPost);
   return (
     <div className="App">
       <Container>
         <Row>
           <Col xs lg={3}>
-            <SideBar changePost={changePost} LoadPost={LoadPost} />
+            <SideBar changePost={changePost} />
           </Col>
           <Col xs lg={9}>
-            {focusedPost !== 0 && <ExpandedView id={focusedPost} />}
+            {focusedPost !== 0 && <ExpandedView post={nodeItem} />}
           </Col>
         </Row>
       </Container>

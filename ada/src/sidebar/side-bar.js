@@ -25,7 +25,6 @@ const SideBar = ({ changePost, LoadPost }) => {
     return (
       <SideItemContainer
         onClick={() => {
-          console.log('ran');
           setExpand(i);
           changePost(node.id);
         }}
