@@ -1,25 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Spinner } from 'react-bootstrap';
 import SideItemContainer from './side-item';
 
-const SideBar = ({ changePost, LoadPost }) => {
-  const [loading, setLoading] = useState(true);
+const SideBar = ({ changePost, LoadPost, nodes }) => {
   const [expandedNode, setExpand] = useState(-1);
-  const [nodes, setNodes] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:5000/nodes')
-      .then((res) => res.json())
-      .then((result) => {
-        setNodes(result);
-        setLoading(false);
-      });
-  }, []);
-
-  // const displayAllPosts = postIDs.map((id, i) => {
-  //   if (i == 0) return <BlogItem key={i} itemID={id} mainPost={true} />;
-  //   else if (i < 30 * page) return <BlogItem key={i} itemID={id} />;
-  // });
 
   const ItemsList = nodes.map((node, i) => {
     return (
@@ -35,7 +18,6 @@ const SideBar = ({ changePost, LoadPost }) => {
       />
     );
   });
-  if (loading) return <Spinner></Spinner>;
   return <div>{ItemsList}</div>;
 };
 
