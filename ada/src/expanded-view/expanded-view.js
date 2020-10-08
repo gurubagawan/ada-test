@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { Card } from 'react-bootstrap';
+import styled from 'styled-components';
 import Spinner from '../spinner';
 import { ImageCard, TextCard } from './cards';
+
+const TitleBox = styled.div`
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #21313c;
+  font-weight: 500;
+`;
 
 const ExpandedView = ({ post, searchVal }) => {
   if (!post) return <Spinner />;
@@ -13,7 +22,7 @@ const ExpandedView = ({ post, searchVal }) => {
   });
   return (
     <div>
-      {post.title} <br />
+      <TitleBox>{post.title}</TitleBox>
       {expandedList}
     </div>
   );

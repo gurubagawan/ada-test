@@ -3,6 +3,15 @@ import { Row, Container, Col, Spinner } from 'react-bootstrap';
 import './App.css';
 import ExpandedView from './expanded-view/expanded-view';
 import SideBar from './sidebar/side-bar';
+import styled from 'styled-components';
+
+const MainBox = styled.div`
+  padding-top: 50px;
+  background: #f4f1ee;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+`;
 
 function App() {
   const [focusedPost, changePost] = useState(0);
@@ -28,8 +37,7 @@ function App() {
       });
   }, []);
 
-  function OnSubmit(e) {
-    e.preventDefault();
+  function OnSubmit() {
     setLoading(true);
     fetch('http://localhost:5000/nodes/search', {
       method: 'POST',
@@ -40,7 +48,6 @@ function App() {
     })
       .then((res) => res.json())
       .then((response) => {
-        // console.log(response);
         setNodes(response);
         setLoading(false);
       });
@@ -48,7 +55,7 @@ function App() {
 
   if (loading) return <Spinner />;
   return (
-    <div className="App">
+    <MainBox className="App">
       <Container>
         <Row>
           <Col xs lg={3}>
@@ -59,8 +66,13 @@ function App() {
                 value={searchVal}
                 component="input"
                 type="text"
+                style={{
+                  width: '100%',
+                  border: '1px solid rgba(0,0,0,.125)',
+                  borderRadius: '0.25em',
+                  marginBottom: 5,
+                }}
               />
-              <button type="submit" />
             </form>
             <SideBar changePost={changePost} nodes={nodes} />
           </Col>
@@ -71,7 +83,7 @@ function App() {
           </Col>
         </Row>
       </Container>
-    </div>
+    </MainBox>
   );
 }
 
