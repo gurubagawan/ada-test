@@ -22,14 +22,15 @@ const SideItemContainer = ({
   async function getSubNode(item) {
     let response = await fetch(`http://localhost:5000/nodes/${item}`);
     let data = await response.json();
+    console.log(data[0].title);
     // console.log(response[0].title);
-    return data;
+    return data[0].title;
   }
 
   let displaySubs = nodeData.connections
     ? nodeData.connections.map((item, i) => {
-        // console.log(item);
-        return getSubNode(item).then((data) => console.log(data[0].title));
+        console.log(item);
+        return <div>{getSubNode(item)};</div>;
         // let showdiv;
         // fetch(`http://localhost:5000/nodes/${item}`)
         //   .then((res) => res.json())
@@ -44,7 +45,7 @@ const SideItemContainer = ({
       })
     : '';
 
-  console.log(displaySubs);
+  // console.log(displaySubs);
 
   return (
     <Card style={{ marginBottom: 5 }} onClick={onClick}>
