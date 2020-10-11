@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import styled from 'styled-components';
 import Spinner from '../spinner';
-import { ImageCard, TextCard } from './cards';
+import { ImageCard } from './image-card';
+import { TextCard } from './text-card';
 
 const TitleBox = styled.div`
   font-size: 20px;
@@ -15,7 +16,7 @@ const ExpandedView = ({ post, searchVal }) => {
   if (!post) return <Spinner />;
   const expandedList = post.content.map((item, i) => {
     if (item.type === 'text') {
-      return <TextCard searchVal={searchVal} body={item.body} key={i} />;
+      return <TextCard searchVal={searchVal} bodyText={item.body} key={i} />;
     } else if (item.type === 'image') {
       return <ImageCard url={item.url} />;
     }
