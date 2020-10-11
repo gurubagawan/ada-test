@@ -73,6 +73,11 @@ export function TextCard({ bodyText, searchVal }) {
       ))}
       <div style={{ marginTop: 5 }}>
         {stringObjects.map((item, i) => {
+          // I wasn't totally sure what was required for the variables from the instructions, and didn't get clarification before submitting. Going with my best guess from the image
+          // I'm outputting the variable values as a small tag
+
+          // Operating under the assumption that an empty tag is an api issue, or that it was mistakenly entered, I am filtering out empty objects here, otherwise they will show an empty tag
+          if (item.objectValue == '') return null;
           return (
             <Button
               disabled
