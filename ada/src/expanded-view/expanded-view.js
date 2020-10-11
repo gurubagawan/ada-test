@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Card } from 'react-bootstrap';
+import React from 'react';
 import styled from 'styled-components';
 import Spinner from '../spinner';
 import { ImageCard } from './image-card';
-import { TextCard } from './text-card';
+import TextCard from './text-card';
 
 const TitleBox = styled.div`
   font-size: 20px;

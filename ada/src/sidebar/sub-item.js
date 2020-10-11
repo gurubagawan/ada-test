@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Card } from 'react-bootstrap';
 import styled from 'styled-components';
 import { Spinner } from 'react-bootstrap';
 
@@ -10,10 +9,9 @@ const SubBox = styled.div`
   text-align: left;
 `;
 
-const SubItemBox = ({ node, onClick }) => {
-  const [loading, setLoaded] = useState(true);
+function SubItemBox({ node, onClick }) {
   const [nodeData, setData] = useState({});
-  const [subinfo, setSubs] = useState([]);
+
   useEffect(() => {
     fetch(`http://localhost:5000/nodes/${node}`)
       .then((response) => {
@@ -34,6 +32,6 @@ const SubItemBox = ({ node, onClick }) => {
   if (!nodeData) return <Spinner />;
 
   return <SubBox onClick={onClick}>{nodeData.title}</SubBox>;
-};
+}
 
 export default SubItemBox;

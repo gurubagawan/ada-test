@@ -5,6 +5,7 @@ import ExpandedView from './expanded-view/expanded-view';
 import SideBar from './sidebar/side-bar';
 import styled from 'styled-components';
 
+//I generally use styled divs when there is more than 2/3 items. It helps the code to look cleaner in return
 const MainBox = styled.div`
   padding-top: 50px;
   background: #f4f1ee;
@@ -15,7 +16,7 @@ const MainBox = styled.div`
 `;
 
 function App() {
-  const [focusedPost, changePost] = useState(0);
+  const [focusedPost, changePost] = useState(-1);
   const [nodeItem, setNode] = useState({});
   const [searchVal, setSearch] = useState('');
   const [nodes, setNodes] = useState([]);
@@ -39,7 +40,8 @@ function App() {
       });
   }, [focusedPost]);
 
-  // Load all the nodes for the sidebar on page load. I'm doing it in App, because in the actuall side bar component I'll have account for the connection nodes, so it looks cleaner to have these functions as seperated as possible. This only needs to run on load, so the array of arguments is empty
+  // Load all the nodes for the sidebar on page load. I'm doing it in App, because in the actuall side bar component I'll have account for the connection nodes, so it looks cleaner to have these functions as seperated as possible.
+  // This only needs to run on load, so the array of arguments is empty
   useEffect(() => {
     fetch('http://localhost:5000/nodes')
       .then((response) => {
@@ -86,7 +88,7 @@ function App() {
 
   // This loading is something I used in a few places on my app. For this page I needed it for the OnSubmit and the Sidebar.
   // By doing this if the respective objects are not loaded yet, it won't error out, and instead just display the spinner.
-  // I set Loading true on page load, and then false after objects are loaded.
+  // I set Loading true on page load or when the search starts, and then false after objects are loaded.
   if (loading) return <Spinner />;
   return (
     <MainBox className="App">
@@ -94,7 +96,7 @@ function App() {
         <Row>
           <Col xs lg={3}>
             <form onSubmit={OnSubmit}>
-              {/* For Some reason styled.input errors out a lot so I left inline styling here */}
+              {/* Styled.input errors out a lot so I left inline styling here */}
               <input
                 onChange={(e) => setSearch(e.target.value)}
                 name="searchVal"
@@ -114,8 +116,8 @@ function App() {
             <SideBar changePost={changePost} nodes={nodes} />
           </Col>
           <Col xs lg={9}>
-            {/* when Focused Post == 0, there is no post to show. */}
-            {focusedPost !== 0 && (
+            {/* when Focused Post < 0, there is no post to show- the default state- so expanded view doesn't need to show */}
+            {focusedPost >= 0 && (
               <ExpandedView searchVal={searchVal} post={nodeItem} />
             )}
           </Col>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 
-export function TextCard({ bodyText, searchVal }) {
+const TextCard = ({ bodyText, searchVal }) => {
   // This function looks for all instances of a char in a string. Running this twice will given the start and end indexes in two arrays
   //  Given that we know the object is surrounded by { }, I'm assuming that the indexes between the two arrays will match. IE startindex/endindex[0] surround the first object
   function indexOfAll(string, searchItem) {
@@ -18,8 +18,6 @@ export function TextCard({ bodyText, searchVal }) {
   let startingIndexes = indexOfAll(bodyText, '{');
   let endIndexes = indexOfAll(bodyText, '}');
 
-  // console.log(startingIndexes);
-
   let stringObjects = [];
   if (startingIndexes.length) {
     for (let i = 0; i < startingIndexes.length; i++) {
@@ -27,6 +25,8 @@ export function TextCard({ bodyText, searchVal }) {
         startingIndexes[i],
         endIndexes[i] + 1
       );
+
+      // In the string, | always shows the break between key and value, so that will be what I look for when searching for the value
       let objectValueStart = thisObject.indexOf('|');
       let objectValue = thisObject.slice(
         objectValueStart + 1,
@@ -48,16 +48,6 @@ export function TextCard({ bodyText, searchVal }) {
     }
   }
 
-  // if (!searchVal)
-  //   return (
-  //     <Card
-  //       style={{ marginBottom: 10, color: '#21313C' }}
-  //       body
-  //       border="secondary"
-  //     >
-  //       {newString}
-  //     </Card>
-  //   );
   const textArray = newString.split(searchVal);
   return (
     <Card
@@ -91,4 +81,6 @@ export function TextCard({ bodyText, searchVal }) {
       </div>
     </Card>
   );
-}
+};
+
+export default TextCard;

@@ -2,20 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import SubItemBox from './sub-item';
 
-const SideItemContainer = ({
-  node,
+function SideItemContainer({
   node: { title, id },
   expanded,
   onClick,
-  setExpand,
   changePost,
-}) => {
-  // console.log(title);
+}) {
   const [loading, setLoaded] = useState(true);
   const [nodeData, setData] = useState({});
   const [subinfo, setSubs] = useState([]);
-  // console.log(hasConnections);
 
+  // This component will run for every single node, so it stores the node in it's own state
   useEffect(() => {
     fetch(`http://localhost:5000/nodes/${id}`)
       .then((response) => {
@@ -57,6 +54,6 @@ const SideItemContainer = ({
       )}
     </Card>
   );
-};
+}
 
 export default SideItemContainer;
