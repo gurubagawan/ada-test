@@ -1,56 +1,61 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
+import SubItemBox from './sub-item';
 
 const SideItemContainer = ({
   node,
   node: { title, id },
   expanded,
   onClick,
+  setExpand,
+  changePost,
 }) => {
   // console.log(title);
   const [loading, setLoaded] = useState(true);
   const [nodeData, setData] = useState({});
+  const [subinfo, setSubs] = useState([]);
+  // console.log(hasConnections);
 
   useEffect(() => {
     fetch(`http://localhost:5000/nodes/${id}`)
-      .then((res) => res.json())
-      .then((result) => {
-        setData(result[0]);
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('something went wrong');
+        }
+      })
+      .then((responseJson) => {
+        setData(responseJson[0]);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, []);
 
-  async function getSubNode(item) {
-    let response = await fetch(`http://localhost:5000/nodes/${item}`);
-    let data = await response.json();
-    console.log(data[0].title);
-    // console.log(response[0].title);
-    return data[0].title;
-  }
+  // a clean variable to compare to see if connections exists. If connections doesn't exist, map lower down will break without check
+  const hasConnections = nodeData.connections !== null;
 
-  let displaySubs = nodeData.connections
-    ? nodeData.connections.map((item, i) => {
-        console.log(item);
-        return <div>{getSubNode(item)};</div>;
-        // let showdiv;
-        // fetch(`http://localhost:5000/nodes/${item}`)
-        //   .then((res) => res.json())
-        //   .then((result) => {
-        //     // subs.push(<div>{result[0].title}</div>);
-        //     console.log(result[0].title);
-        //     return <div>{result[0].title}</div>;
-        //     // console.log(showdiv);
-        //   });
-        // console.log('ran');
-        // return showdiv;
-      })
-    : '';
-
-  // console.log(displaySubs);
+  const mySubs = (nodeInfo) =>
+    nodeInfo.connections.map((item, i) => {
+      return (
+        <SubItemBox
+          onClick={() => {
+            console.log(item);
+            changePost(item);
+          }}
+          node={item}
+        />
+      );
+    });
+  // console.log('final return', displaySubs);
 
   return (
-    <Card style={{ marginBottom: 5 }} onClick={onClick}>
-      {title}
-      {expanded && displaySubs}
+    <Card style={{ marginBottom: 5 }}>
+      <div onClick={onClick}>{title}</div>
+      {expanded && hasConnections && (
+        <div style={{ marginTop: 2.5 }}>{mySubs(nodeData)}</div>
+      )}
     </Card>
   );
 };

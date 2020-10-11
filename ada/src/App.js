@@ -10,7 +10,7 @@ const MainBox = styled.div`
   background: #f4f1ee;
   height: 100%;
   width: 100%;
-  position: fixed;
+  overflow-y: scroll;
 `;
 
 function App() {
@@ -93,17 +93,20 @@ function App() {
         <Row>
           <Col xs lg={3}>
             <form onSubmit={OnSubmit}>
+              {/* For Some reason styled.input errors out a lot so I left inline styling here */}
               <input
                 onChange={(e) => setSearch(e.target.value)}
                 name="searchVal"
                 value={searchVal}
                 component="input"
                 type="text"
+                placeholder="Enter a search term"
                 style={{
                   width: '100%',
                   border: '1px solid rgba(0,0,0,.125)',
                   borderRadius: '0.25em',
                   marginBottom: 5,
+                  textAlign: 'center',
                 }}
               />
             </form>

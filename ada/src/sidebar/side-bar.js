@@ -3,7 +3,6 @@ import SideItemContainer from './side-item';
 
 const SideBar = ({ changePost, LoadPost, nodes }) => {
   const [expandedNode, setExpand] = useState(-1);
-  // console.log(nodes);
 
   const ItemsList = nodes.map((node, i) => {
     return (
@@ -12,6 +11,8 @@ const SideBar = ({ changePost, LoadPost, nodes }) => {
           setExpand(i);
           changePost(node.id);
         }}
+        setExpand={() => setExpand(i)}
+        changePost={(id) => changePost(id)}
         key={i}
         node={node}
         expanded={i === expandedNode}
