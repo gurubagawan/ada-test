@@ -20,23 +20,44 @@ function App() {
   const [nodes, setNodes] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Make a function that loads the detailed view of posts, and does it based by looking for a change in focused post, which is an integer that gets changed onclick
   useEffect(() => {
     fetch(`http://localhost:5000/nodes/${focusedPost}`)
-      .then((res) => res.json())
-      .then((result) => {
-        setNode(result[0]);
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('something went wrong');
+        }
+      })
+      .then((responseJson) => {
+        setNode(responseJson[0]);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, [focusedPost]);
 
+  // Load all the nodes for the sidebar on page load. I'm doing it in App, because in the actuall side bar component I'll have account for the connection nodes, so it looks cleaner to have these functions as seperated as possible. This only needs to run on load, so the array of arguments is empty
   useEffect(() => {
     fetch('http://localhost:5000/nodes')
-      .then((res) => res.json())
-      .then((result) => {
-        setNodes(result);
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('something went wrong');
+        }
+      })
+      .then((responseJson) => {
+        setNodes(responseJson);
         setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, []);
 
+  // This is tied to the search box. I thought about using Redux-form for the search box, but seeing as it's only one field, I realized it's relatively simply, and not worth the effort of setting up redux.
   function OnSubmit() {
     setLoading(true);
     fetch('http://localhost:5000/nodes/search', {
@@ -46,13 +67,25 @@ function App() {
       },
       body: JSON.stringify({ query: searchVal }),
     })
-      .then((res) => res.json())
       .then((response) => {
-        setNodes(response);
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('something went wrong');
+        }
+      })
+      .then((responseJson) => {
+        setNodes(responseJson);
         setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 
+  // This loading is something I used in a few places on my app. For this page I needed it for the OnSubmit and the Sidebar.
+  // By doing this if the respective objects are not loaded yet, it won't error out, and instead just display the spinner.
+  // I set Loading true on page load, and then false after objects are loaded.
   if (loading) return <Spinner />;
   return (
     <MainBox className="App">
@@ -77,6 +110,7 @@ function App() {
             <SideBar changePost={changePost} nodes={nodes} />
           </Col>
           <Col xs lg={9}>
+            {/* when Focused Post == 0, there is no post to show. */}
             {focusedPost !== 0 && (
               <ExpandedView searchVal={searchVal} post={nodeItem} />
             )}

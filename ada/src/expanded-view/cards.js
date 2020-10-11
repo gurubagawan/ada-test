@@ -13,6 +13,7 @@ export function TextCard({ body, searchVal }) {
       </Card>
     );
   const textArray = body.split(searchVal);
+  console.log(textArray);
   return (
     <Card
       style={{ marginBottom: 10, color: '#21313C' }}
