@@ -48,7 +48,6 @@ const SideItemContainer = ({
         />
       );
     });
-  // console.log('final return', displaySubs);
 
   return (
     <Card style={{ marginBottom: 5 }}>
