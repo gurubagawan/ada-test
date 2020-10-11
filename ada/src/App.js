@@ -11,6 +11,7 @@ const MainBox = styled.div`
   height: 100%;
   width: 100%;
   overflow-y: scroll;
+  padding-bottom: 50px;
 `;
 
 function App() {

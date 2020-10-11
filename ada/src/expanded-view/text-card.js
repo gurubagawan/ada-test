@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
 export function TextCard({ bodyText, searchVal }) {
   // This function looks for all instances of a char in a string. Running this twice will given the start and end indexes in two arrays
@@ -27,7 +27,18 @@ export function TextCard({ bodyText, searchVal }) {
         startingIndexes[i],
         endIndexes[i] + 1
       );
-      stringObjects.push({ object: thisObject, index: startingIndexes[i] });
+      let objectValueStart = thisObject.indexOf('|');
+      let objectValue = thisObject.slice(
+        objectValueStart + 1,
+        thisObject.length - 1
+      );
+
+      // Keeping the uncut object as a string so it's easy to look for and slice out, and then the value of the object so I can easily access it
+      stringObjects.push({
+        object: thisObject,
+        objectValue: objectValue,
+        index: startingIndexes[i],
+      });
     }
     // Even though this is the same loop
     // I Have to seperate this part of the function from the rest of the loop out because after the first run,
@@ -37,17 +48,17 @@ export function TextCard({ bodyText, searchVal }) {
     }
   }
 
-  if (!searchVal)
-    return (
-      <Card
-        style={{ marginBottom: 10, color: '#21313C' }}
-        body
-        border="secondary"
-      >
-        {newString}
-      </Card>
-    );
-  const textArray = bodyText.split(searchVal);
+  // if (!searchVal)
+  //   return (
+  //     <Card
+  //       style={{ marginBottom: 10, color: '#21313C' }}
+  //       body
+  //       border="secondary"
+  //     >
+  //       {newString}
+  //     </Card>
+  //   );
+  const textArray = newString.split(searchVal);
   return (
     <Card
       style={{ marginBottom: 10, color: '#21313C' }}
@@ -60,6 +71,19 @@ export function TextCard({ bodyText, searchVal }) {
           {index !== textArray.length - 1 && <b>{searchVal}</b>}
         </>
       ))}
+      <div style={{ marginTop: 5 }}>
+        {stringObjects.map((item, i) => {
+          return (
+            <Button
+              disabled
+              style={{ marginRight: 5, width: 100, fontSize: 12 }}
+              variant="outline-info"
+            >
+              {item.objectValue}
+            </Button>
+          );
+        })}
+      </div>
     </Card>
   );
 }
