@@ -5,7 +5,7 @@ import ExpandedView from './expanded-view/expanded-view';
 import SideBar from './sidebar/side-bar';
 import styled from 'styled-components';
 
-//I generally use styled divs when there is more than 2/3 items. It helps the code to look cleaner in return
+//I generally use styled divs when there is more than 2/3 items to style. It helps the code to look cleaner in return.
 const MainBox = styled.div`
   padding-top: 50px;
   background: #f4f1ee;
@@ -62,6 +62,8 @@ function App() {
 
   // This is tied to the search box. I thought about using Redux-form for the search box, but seeing as it's only one field, I realized it's relatively simply, and not worth the effort of setting up redux.
   function OnSubmit() {
+    // An empty search value causes an on the api, so if the search is accidentally submitted when it's empty we can essentially just cancel the search, which stops the app from breaking
+    if (!searchVal) return;
     setLoading(true);
     fetch('http://localhost:5000/nodes/search', {
       method: 'POST',
