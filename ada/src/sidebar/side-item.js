@@ -11,6 +11,7 @@ function SideItemContainer({
   const [loading, setLoaded] = useState(true);
   const [nodeData, setData] = useState({});
   const [subinfo, setSubs] = useState([]);
+  const [expandedNode, setExpand] = useState(-1);
 
   // This component will run for every single node, so it stores the node in it's own state
   useEffect(() => {
@@ -38,9 +39,12 @@ function SideItemContainer({
       return (
         <SubItemBox
           onClick={() => {
-            console.log(item);
+            setExpand(i);
+            console.log(changePost);
             changePost(item);
           }}
+          expanded={expandedNode === i}
+          changePost={(id) => changePost(id)}
           node={item}
         />
       );
@@ -49,9 +53,7 @@ function SideItemContainer({
   return (
     <Card style={{ marginBottom: 5 }}>
       <div onClick={onClick}>{title}</div>
-      {expanded && hasConnections && (
-        <div style={{ marginTop: 2.5 }}>{mySubs(nodeData)}</div>
-      )}
+      {expanded && hasConnections && <div>{mySubs(nodeData)}</div>}
     </Card>
   );
 }
