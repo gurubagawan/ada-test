@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Spinner } from 'react-bootstrap';
-import SubItemBox from './sub-item';
 
 const SubBox = styled.div`
   margin-left: 10%;
