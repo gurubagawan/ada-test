@@ -17,7 +17,7 @@ const ExpandedView = ({ post, searchVal }) => {
     if (item.type === 'text') {
       return <TextCard searchVal={searchVal} bodyText={item.body} key={i} />;
     } else if (item.type === 'image') {
-      return <ImageCard url={item.url} />;
+      return <ImageCard key={i} url={item.url} />;
     }
   });
   return (

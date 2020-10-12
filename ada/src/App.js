@@ -15,6 +15,20 @@ const MainBox = styled.div`
   padding-bottom: 50px;
 `;
 
+const InputBox = styled.input`
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25em;
+  margin-bottom: 10px;
+  text-align: center;
+`;
+
+const SubmitButton = styled.button`
+  height: 20px;
+  background: none;
+  border: none;
+`;
+
 function App() {
   const [focusedPost, changePost] = useState(-1);
   const [nodeItem, setNode] = useState({});
@@ -97,25 +111,25 @@ function App() {
       <Container>
         <Row>
           <Col xs lg={3}>
-            <form onSubmit={OnSubmit}>
-              {/* Styled.input errors out a lot so I left inline styling here */}
-              <input
-                onChange={(e) => setSearch(e.target.value)}
-                name="searchVal"
-                value={searchVal}
-                component="input"
-                type="text"
-                placeholder="Enter a search term"
-                style={{
-                  width: '100%',
-                  border: '1px solid rgba(0,0,0,.125)',
-                  borderRadius: '0.25em',
-                  marginBottom: 5,
-                  textAlign: 'center',
-                }}
-              />
-            </form>
-            <SideBar changePost={changePost} nodes={nodes} />
+            <nav>
+              <form style={{ display: 'flex' }} onSubmit={OnSubmit}>
+                <InputBox
+                  onChange={(e) => setSearch(e.target.value)}
+                  name="searchVal"
+                  value={searchVal}
+                  component="input"
+                  type="text"
+                  placeholder="Enter a search term"
+                />
+                <SubmitButton type="submit">
+                  <img
+                    style={{ height: '100%', width: 'auto' }}
+                    src="search-icon.png"
+                  />
+                </SubmitButton>
+              </form>
+              <SideBar changePost={changePost} nodes={nodes} />
+            </nav>
           </Col>
           <Col xs lg={9}>
             {/* when Focused Post < 0, there is no post to show- the default state- so expanded view doesn't need to show */}

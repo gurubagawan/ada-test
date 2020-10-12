@@ -1,11 +1,30 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
+import styled from 'styled-components';
+
+const VarTag = styled.div`
+  margin-right: 5;
+  width: 100;
+  font-size: 12px;
+  border: 1px solid #17a2b8;
+  border-radius: 3px;
+  color: #17a2b8;
+`;
+
+const TagsContainer = styled.div`
+  display: flex;
+  margin-right: 5px;
+  width: 100%;
+  font-size: 12px;
+  margin-top: 5px;
+  justify-content: center;
+`;
 
 const TextCard = ({ bodyText, searchVal }) => {
   // This function looks for all instances of a char in a string. Running this twice will given the start and end indexes in two arrays
   //  Given that we know the object is surrounded by { }, I'm assuming that the indexes between the two arrays will match. IE startindex/endindex[0] surround the first object
   function indexOfAll(string, searchItem) {
-    var i = string.indexOf(searchItem),
+    let i = string.indexOf(searchItem),
       indexes = [];
     while (i !== -1) {
       indexes.push(i);
@@ -61,7 +80,7 @@ const TextCard = ({ bodyText, searchVal }) => {
           {index !== textArray.length - 1 && <b>{searchVal}</b>}
         </>
       ))}
-      <div style={{ marginTop: 5 }}>
+      <TagsContainer>
         {stringObjects.map((item, i) => {
           // I wasn't totally sure what was required for the variables from the instructions, and didn't get clarification before submitting. Going with my best guess from the image
           // I'm outputting the variable values as a small tag
@@ -69,16 +88,15 @@ const TextCard = ({ bodyText, searchVal }) => {
           // Operating under the assumption that an empty tag is an api issue, or that it was mistakenly entered, I am filtering out empty objects here, otherwise they will show an empty tag
           if (item.objectValue == '') return null;
           return (
-            <Button
-              disabled
+            <VarTag
               style={{ marginRight: 5, width: 100, fontSize: 12 }}
               variant="outline-info"
             >
               {item.objectValue}
-            </Button>
+            </VarTag>
           );
         })}
-      </div>
+      </TagsContainer>
     </Card>
   );
 };
