@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SideItemContainer from './side-item';
 
-function SideBar({ changePost, nodes }) {
+function SideBar({ changePost, nodes, connections }) {
   const [expandedNode, setExpand] = useState(-1);
 
   const ItemsList = nodes.map((node, i) => {
@@ -12,6 +12,7 @@ function SideBar({ changePost, nodes }) {
           changePost(node.id);
         }}
         setExpand={() => setExpand(i)}
+        connections={connections}
         // Giving the children access to change post so that they can change post when clicked
         changePost={(id) => changePost(id)}
         key={i}

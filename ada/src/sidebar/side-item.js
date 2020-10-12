@@ -7,10 +7,9 @@ function SideItemContainer({
   expanded,
   onClick,
   changePost,
+  connections,
 }) {
-  const [loading, setLoaded] = useState(true);
   const [nodeData, setData] = useState({});
-  const [subinfo, setSubs] = useState([]);
   const [expandedNode, setExpand] = useState(-1);
 
   // This component will run for every single node, so it stores the node in it's own state
@@ -29,8 +28,41 @@ function SideItemContainer({
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
 
+  const makeSubBox = (index) => {
+    return (
+      <SubItemBox
+        onClick={() => {
+          setExpand(index);
+          changePost(index);
+        }}
+        expanded={true}
+        changePost={(id) => changePost(id)}
+        node={index}
+      />
+    );
+  };
+
+  let arrayofThings = [];
+
+  // This is what I was able to make for a recursive function. Any feedback would be appreciated on how to go further
+  function eachRecursive(obj) {
+    console.log(obj);
+    for (var k in obj) {
+      // console.log(obj[k]);
+      if (Array.isArray(obj[k])) {
+        console.log(obj[k]);
+        eachRecursive(obj[k]);
+        // console.log('bottom');
+      } else {
+        console.log(obj[k]);
+        arrayofThings.push(makeSubBox(obj[k]));
+      }
+    }
+    console.log(arrayofThings);
+    return arrayofThings;
+  }
   // a clean variable to compare to see if connections exists. If connections doesn't exist, map lower down will break without check
   const hasConnections = nodeData.connections !== null;
 
@@ -40,7 +72,6 @@ function SideItemContainer({
         <SubItemBox
           onClick={() => {
             setExpand(i);
-            console.log(changePost);
             changePost(item);
           }}
           expanded={expandedNode === i}
@@ -53,7 +84,9 @@ function SideItemContainer({
   return (
     <Card style={{ marginBottom: 5 }}>
       <div onClick={onClick}>{title}</div>
-      {expanded && hasConnections && <div>{mySubs(nodeData)}</div>}
+      <div>{expanded && hasConnections && mySubs(nodeData)}</div>
+
+      {/* <div>{expanded && hasConnections && eachRecursive([[1, 2], 3, 4])}</div> */}
     </Card>
   );
 }

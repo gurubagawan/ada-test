@@ -35,6 +35,7 @@ function App() {
   const [searchVal, setSearch] = useState('');
   const [nodes, setNodes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [connections, setConnections] = useState([]);
 
   // Make a function that loads the detailed view of posts, and does it based by looking for a change in focused post, which is an integer that gets changed onclick
   useEffect(() => {
@@ -48,6 +49,7 @@ function App() {
       })
       .then((responseJson) => {
         setNode(responseJson[0]);
+        // setConnections([...connections, responseJson[0].connections]);
       })
       .catch((error) => {
         console.log(error);

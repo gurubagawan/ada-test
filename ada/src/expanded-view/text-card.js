@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const VarTag = styled.div`
@@ -86,7 +86,7 @@ const TextCard = ({ bodyText, searchVal }) => {
           // I'm outputting the variable values as a small tag
 
           // Operating under the assumption that an empty tag is an api issue, or that it was mistakenly entered, I am filtering out empty objects here, otherwise they will show an empty tag
-          if (item.objectValue == '') return null;
+          if (item.objectValue === '') return null;
           return (
             <VarTag
               style={{ marginRight: 5, width: 100, fontSize: 12 }}

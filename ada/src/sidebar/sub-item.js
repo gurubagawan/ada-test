@@ -29,7 +29,7 @@ function SubItemBox({ node, onClick, expanded, changePost }) {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [node]);
 
   const level2Subs = (nodeInfo) =>
     nodeInfo.connections.map((item, i) => {

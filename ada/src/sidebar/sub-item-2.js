@@ -27,7 +27,7 @@ function SubLevelTwoBox({ node, onClick }) {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [node]);
 
   if (!nodeData) return <Spinner />;
 
