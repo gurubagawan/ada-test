@@ -30,6 +30,7 @@ function SideItemContainer({
       });
   }, [id]);
 
+  // This is what I was able to make for a recursive function. Any feedback would be appreciated on how to go further. From her to line 67
   const makeSubBox = (index) => {
     return (
       <SubItemBox
@@ -46,7 +47,6 @@ function SideItemContainer({
 
   let arrayofThings = [];
 
-  // This is what I was able to make for a recursive function. Any feedback would be appreciated on how to go further
   function eachRecursive(obj) {
     console.log(obj);
     for (var k in obj) {
@@ -63,6 +63,7 @@ function SideItemContainer({
     console.log(arrayofThings);
     return arrayofThings;
   }
+
   // a clean variable to compare to see if connections exists. If connections doesn't exist, map lower down will break without check
   const hasConnections = nodeData.connections !== null;
 

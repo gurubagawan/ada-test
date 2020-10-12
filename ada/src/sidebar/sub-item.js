@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Spinner } from 'react-bootstrap';
+import Spinner from '../spinner';
 import SubLevelTwoBox from './sub-item-2';
 
 const SubBox = styled.div`

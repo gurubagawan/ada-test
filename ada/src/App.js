@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Container, Col, Spinner } from 'react-bootstrap';
+import { Row, Container, Col } from 'react-bootstrap';
 import './App.css';
 import ExpandedView from './expanded-view/expanded-view';
 import SideBar from './sidebar/side-bar';
 import styled from 'styled-components';
+import Spinner from './spinner';
 
 //I generally use styled divs when there is more than 2/3 items to style. It helps the code to look cleaner in return.
 const MainBox = styled.div`
